@@ -1,9 +1,9 @@
-import React, { FC } from "react";
-import "./App.css";
+import React, { FC } from 'react';
+import { Test } from './styles';
 
 const App: FC = () => {
   return (
-    <div className="App">
+    <Test>
       <header className="App-header">
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -17,7 +17,7 @@ const App: FC = () => {
           Learn React
         </a>
       </header>
-    </div>
+    </Test>
   );
 };
 
