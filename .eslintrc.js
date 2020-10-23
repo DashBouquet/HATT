@@ -18,7 +18,7 @@ module.exports = {
     node: true,
     es6: true,
   },
-  plugins: ['@typescript-eslint', 'react', 'prettier'],
+  plugins: ['@typescript-eslint', 'react', 'prettier', 'react-hooks'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -29,6 +29,8 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'react-hooks/rules-of-hooks': 'error', // Проверяем правила хуков
+    'react-hooks/exhaustive-deps': 'warn', // Проверяем зависимости эффекта
     // Disable prop-types as we use TypeScript for type checking
     'react/prop-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
@@ -36,6 +38,7 @@ module.exports = {
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     // needed for NextJS's jsx without react import
     'react/react-in-jsx-scope': 'off',
   },
