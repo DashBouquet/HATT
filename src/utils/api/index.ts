@@ -109,8 +109,7 @@ const extractLocationNumber = (character: any) => {
 
 export const getCharactersPage = async (page?: number) => {
   const res = await getResource(`/character/?page${page ? page : 1}`);
-  const resultInfo = await res.results.map(transformCharacter);
-  return resultInfo;
+  return Promise.all(res.results.map(transformCharacter));
 };
 
 const getLocations = async (origin: number, location: number) => {
