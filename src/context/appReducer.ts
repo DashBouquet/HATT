@@ -1,8 +1,9 @@
 import { SET_DATA } from '../constants';
+import { ParsedRes, StateType } from '../types';
 
-type Action = { type: string; payload: any };
+type Action = { type: string; payload: ParsedRes };
 
-const appReducer = (state: any, action: Action) => {
+const appReducer = (state: StateType, action: Action) => {
   switch (action.type) {
     case SET_DATA:
       return {

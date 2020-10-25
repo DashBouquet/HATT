@@ -19,8 +19,6 @@ export const Layout: FC = () => {
   );
   const { isLoading, isError } = useFetch(setData, getCharactersPage);
 
-  console.log(characterPage);
-
   const columns = [
     {
       title: '№',

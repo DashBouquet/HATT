@@ -1,4 +1,5 @@
 import { DEFAULT_DATA } from '../../constants';
+import { CharacterSchema, LocationSchema } from '../../types';
 export class RMApi {
   _apiBase = 'https://rickandmortyapi.com/api/';
 
@@ -20,12 +21,12 @@ export class RMApi {
     }
   }
 
-  _transformCharacter = async (character: any) => {
+  _transformCharacter = async (character: CharacterSchema) => {
     const { origin, location } = this._extractLocationNumber(character);
     const {
       originData = DEFAULT_DATA,
       locationData = DEFAULT_DATA,
-    } = await this.getLocations(origin, location);
+    } = await this.getLocations(Number(origin), Number(location));
     return {
       id: character.id,
       name: character.name,
@@ -38,7 +39,7 @@ export class RMApi {
     };
   };
 
-  _extractLocationNumber(character: any) {
+  _extractLocationNumber(character: CharacterSchema) {
     const locationRegExp = /https:\/\/rickandmortyapi\.com\/api\/location\//;
     const origin = character.origin.url.replace(locationRegExp, '');
     const location = character.location.url.replace(locationRegExp, '');
@@ -60,14 +61,14 @@ export class RMApi {
     return { originData, locationData };
   };
 
-  _extractEpisodeNumber(character: any) {
+  _extractEpisodeNumber(character: CharacterSchema) {
     const EpisodeRegExp = /https:\/\/rickandmortyapi\.com\/api\/episode\//;
     return character.episode.map((item: string) =>
       item.replace(EpisodeRegExp, 'Chapter ')
     );
   }
 
-  _transformLocation = (location: any) => {
+  _transformLocation = (location: LocationSchema) => {
     return {
       locName: location.name,
       locDimension: location.dimension,

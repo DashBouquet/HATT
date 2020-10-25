@@ -1,6 +1,15 @@
 import { useCallback, useEffect, useState } from 'react';
+import { ParsedRes } from '../types';
 
-export const useFetch = (setToStore: any, sendRequest: any) => {
+type Result = {
+  isLoading: boolean;
+  isError: boolean;
+};
+
+export const useFetch = (
+  setToStore: (data: ParsedRes) => void,
+  sendRequest: () => any
+): Result => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
