@@ -1,6 +1,4 @@
-// .eslintrc.js
 module.exports = {
-  // Specifies the ESLint parser
   parser: '@typescript-eslint/parser',
   extends: [
     'plugin:react/recommended',
@@ -23,23 +21,20 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    // Allows for the parsing of modern ECMAScript features
     ecmaVersion: 2018,
-    // Allows for the use of imports
     sourceType: 'module',
   },
   rules: {
-    'react-hooks/rules-of-hooks': 'error', // Проверяем правила хуков
-    'react-hooks/exhaustive-deps': 'warn', // Проверяем зависимости эффекта
-    // Disable prop-types as we use TypeScript for type checking
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
     'react/prop-types': 'off',
+    'react/display-name': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     'prettier/prettier': 'error',
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    // needed for NextJS's jsx without react import
     'react/react-in-jsx-scope': 'off',
   },
   globals: { React: 'writable' },

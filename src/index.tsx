@@ -4,6 +4,7 @@ import { App } from './App';
 import * as serviceWorker from './serviceWorker';
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
+import 'antd/dist/antd.css';
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -15,10 +16,10 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 ReactDOM.render(
-  <React.StrictMode>
+  <>
     <GlobalStyle />
     <App />
-  </React.StrictMode>,
+  </>,
   document.getElementById('root')
 );
 

@@ -8,7 +8,7 @@ export const AppContext = createContext({} as AppContextType);
 
 export const AppState: FC<any> = ({ children }) => {
   const RMApi = new Api();
-  const initialState = { RMApi, characterPage: [] };
+  const initialState = { RMApi, characterPage: [], total: 0 };
   const [state, dispatch] = useReducer(appReducer, initialState);
 
   const setData = useCallback(

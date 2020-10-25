@@ -3,8 +3,11 @@ export class RMApi {
   _apiBase = 'https://rickandmortyapi.com/api/';
 
   getCharactersPage = async (page?: number) => {
-    const res = await this.getResource(`/character/?page${page ? page : 1}`);
-    return Promise.all(res.results.map(this._transformCharacter));
+    const res = await this.getResource(`/character/?page=${page ? page : 1}`);
+    const characterPage = await Promise.all(
+      res.results.map(this._transformCharacter)
+    );
+    return { characterPage, total: res.info.count };
   };
 
   async getResource(url: string) {

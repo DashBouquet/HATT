@@ -1,5 +1,6 @@
 type StateType = {
   characterPage: any;
+  total: number;
   RMApi: any;
 };
 
