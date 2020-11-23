@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useContext, useState } from 'react';
-import { Success, Text, H1 } from './styled';
+import { Success, Text, H1, ButtonForTest } from './styled';
 import { AppContext } from '../../context';
 import { useFetch } from '../../hooks/useFetch';
 import { Modal, Avatar, Table, Tag, Button } from 'antd';
@@ -12,6 +12,7 @@ export const Dashboard: FC = () => {
   } = useContext(AppContext);
   const [currPage, setCurrPage] = useState(1);
   const [currChar, setCurrChar] = useState(1);
+  const [hiddenTextVisible, setHiddenTextVisible] = useState(false);
   const [visible, setVisible] = useState(false);
   const getCharactersPage = useCallback(
     () => RMApi.getCharactersPage(currPage),
@@ -78,6 +79,10 @@ export const Dashboard: FC = () => {
         </Modal>
       )}
       <H1>Rick&Morty App</H1>
+      <ButtonForTest onClick={() => setHiddenTextVisible(!hiddenTextVisible)}>
+        CLICK ME
+      </ButtonForTest>
+      {hiddenTextVisible && <div>Surprise</div>}
       <Table
         loading={isLoading}
         columns={columns}
