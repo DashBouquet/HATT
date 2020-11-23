@@ -8,9 +8,9 @@ I decided to use Context API as state manager there. It can be easily changed to
 
 The Fetch API is used to get data.
 
-For flexible styling, I used the CSS-IN-JS library.
+For flexible styling I used the CSS-IN-JS library.
 
-I used Typescrypt there and also configured basic linting.
+I used Typescript there and also configured basic linting.
 
 The character card is rendered using conditional rendering. Routing could also be used for this.
 
