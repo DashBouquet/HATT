@@ -8,6 +8,10 @@ export type StateDashboard = {
   characterPage: ParsedCharacter[];
   total: number;
   RMApi: Api;
+  currPage: number;
+  currChar: number;
+  hiddenTextVisible: boolean;
+  visible: boolean;
 };
 
 export type AppContextType = {
