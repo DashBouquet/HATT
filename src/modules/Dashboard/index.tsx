@@ -3,14 +3,17 @@ import { Success, Text, H1, ButtonForTest } from './styled';
 import { useFetch } from '../../hooks/useFetch';
 import { Modal, Avatar, Table, Tag, Button } from 'antd';
 import { CharCard } from '../../components';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   selectCharacterPage,
   selectRMApi,
   selectTotal,
 } from '../../store/selectors';
+import { ParsedRes } from '../../types';
+import { SET_DATA } from '../../constants';
 
 export const Dashboard: FC = () => {
+  const dispatch = useDispatch();
   const characterPage = useSelector(selectCharacterPage);
   const RMApi = useSelector(selectRMApi);
   const total = useSelector(selectTotal);
@@ -18,11 +21,15 @@ export const Dashboard: FC = () => {
   const [currChar, setCurrChar] = useState(1);
   const [hiddenTextVisible, setHiddenTextVisible] = useState(false);
   const [visible, setVisible] = useState(false);
+  const setToStore = useCallback(
+    (payload: ParsedRes) => dispatch({ type: SET_DATA, payload }),
+    [dispatch]
+  );
   const getCharactersPage = useCallback(
     () => RMApi.getCharactersPage(currPage),
     [RMApi, currPage]
   );
-  const { isLoading, isError } = useFetch(getCharactersPage);
+  const { isLoading, isError } = useFetch(setToStore, getCharactersPage);
 
   const columns = [
     {

@@ -4,7 +4,7 @@ Link to deployment : https://work-to-show.netlify.app
 
 CD configured from master branch.
 
-I decided to use Context API as state manager there. It can be easily changed to Redux if project will grow.
+Redux used as state manager.
 
 The Fetch API is used to get data.
 
