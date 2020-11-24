@@ -1,5 +1,6 @@
-import { StateType } from '../types';
+import { State } from '../types';
 
-export const selectCharacterPage = (state: StateType) => state.characterPage;
-export const selectRMApi = (state: StateType) => state.RMApi;
-export const selectTotal = (state: StateType) => state.total;
+export const selectCharacterPage = (state: State) =>
+  state.dashboardReducer.characterPage;
+export const selectRMApi = (state: State) => state.dashboardReducer.RMApi;
+export const selectTotal = (state: State) => state.dashboardReducer.total;
