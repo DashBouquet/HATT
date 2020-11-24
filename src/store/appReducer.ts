@@ -1,9 +1,14 @@
+import { Reducer } from 'redux';
+import { initialState } from '.';
 import { SET_DATA } from '../constants';
 import { ParsedRes, StateType } from '../types';
 
 type Action = { type: string; payload: ParsedRes };
 
-const appReducer = (state: StateType, action: Action) => {
+export const appReducer: Reducer<StateType, Action> = (
+  state = initialState,
+  action
+) => {
   switch (action.type) {
     case SET_DATA:
       return {
@@ -15,5 +20,3 @@ const appReducer = (state: StateType, action: Action) => {
       return state;
   }
 };
-
-export default appReducer;

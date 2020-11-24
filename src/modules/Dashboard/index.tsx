@@ -1,15 +1,19 @@
-import React, { FC, useCallback, useContext, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { Success, Text, H1, ButtonForTest } from './styled';
-import { AppContext } from '../../context';
 import { useFetch } from '../../hooks/useFetch';
 import { Modal, Avatar, Table, Tag, Button } from 'antd';
 import { CharCard } from '../../components';
+import { useSelector } from 'react-redux';
+import {
+  selectCharacterPage,
+  selectRMApi,
+  selectTotal,
+} from '../../store/selectors';
 
 export const Dashboard: FC = () => {
-  const {
-    state: { characterPage, RMApi, total },
-    setData,
-  } = useContext(AppContext);
+  const characterPage = useSelector(selectCharacterPage);
+  const RMApi = useSelector(selectRMApi);
+  const total = useSelector(selectTotal);
   const [currPage, setCurrPage] = useState(1);
   const [currChar, setCurrChar] = useState(1);
   const [hiddenTextVisible, setHiddenTextVisible] = useState(false);
@@ -18,7 +22,7 @@ export const Dashboard: FC = () => {
     () => RMApi.getCharactersPage(currPage),
     [RMApi, currPage]
   );
-  const { isLoading, isError } = useFetch(setData, getCharactersPage);
+  const { isLoading, isError } = useFetch(getCharactersPage);
 
   const columns = [
     {

@@ -22,6 +22,7 @@ test('Test user interactions', () => {
 });
 
 test('Test results of async requests', () => {
+  expect(mockGetCharPage).toHaveBeenCalledTimes(1);
   mockGetCharPage.mockResolvedValueOnce({
     characterPage: [
       {
@@ -38,6 +39,5 @@ test('Test results of async requests', () => {
     total: 1,
   });
   const { getByText } = render(<App />);
-
   waitFor(() => getByText('aa'));
 });
