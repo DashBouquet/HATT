@@ -1,4 +1,4 @@
-import { State } from '../types';
+import { State } from '../../types';
 
 //dashboard
 export const selectCharacterPage = (state: State) =>

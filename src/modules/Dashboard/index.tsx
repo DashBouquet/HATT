@@ -12,7 +12,7 @@ import {
   selectRMApi,
   selectTotal,
   selectVisible,
-} from '../../store/selectors';
+} from './selectors';
 import { ParsedRes } from '../../types';
 import {
   SET_CURR_CHAR,
