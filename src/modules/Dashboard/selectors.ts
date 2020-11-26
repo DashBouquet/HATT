@@ -1,6 +1,5 @@
 import { State } from '../../types';
 
-//dashboard
 export const selectCharacterPage = (state: State) =>
   state.dashboardReducer.characterPage;
 export const selectRMApi = (state: State) => state.dashboardReducer.RMApi;
