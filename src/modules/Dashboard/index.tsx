@@ -13,14 +13,16 @@ import {
   selectTotal,
   selectVisible,
 } from './selectors';
+import { Redirect } from 'react-router-dom';
 import { ParsedRes } from '../../types';
 import {
   SET_CURR_CHAR,
   SET_CURR_PAGE,
   SET_DATA,
   SET_MODAL_VISIBLE,
-  SET_TEXT_VISIBLE,
+  SET_TOKEN,
 } from '../../constants';
+import { selectToken } from '../Login/selectors';
 
 export const Dashboard: FC = () => {
   const dispatch = useDispatch();
@@ -31,6 +33,7 @@ export const Dashboard: FC = () => {
   const currChar = useSelector(selectCurrChar);
   const hiddenTextVisible = useSelector(selectHiddenTextVisible);
   const visible = useSelector(selectVisible);
+  const loginToken = useSelector(selectToken);
   const setToStore = useCallback(
     (payload: ParsedRes) => dispatch({ type: SET_DATA, payload }),
     [dispatch]
@@ -41,7 +44,10 @@ export const Dashboard: FC = () => {
   );
   const { isLoading, isError } = useFetch(setToStore, getCharactersPage);
 
-  const setTextVisible = () => dispatch({ type: SET_TEXT_VISIBLE });
+  const logOut = () => {
+    dispatch({ type: SET_TOKEN, payload: '' });
+    localStorage.removeItem('loginToken');
+  };
   const setCurrPage = (page: number) =>
     dispatch({ type: SET_CURR_PAGE, payload: page });
   const setModalVisible = (payload: boolean) =>
@@ -92,6 +98,10 @@ export const Dashboard: FC = () => {
     },
   ];
 
+  if (!loginToken) {
+    return <Redirect to="/login" />;
+  }
+
   return (
     <Success>
       {isError && <div>Something went wrong...</div>}
@@ -108,7 +118,7 @@ export const Dashboard: FC = () => {
         </Modal>
       )}
       <H1>Rick&Morty App</H1>
-      <ButtonForTest onClick={setTextVisible}>CLICK ME</ButtonForTest>
+      <ButtonForTest onClick={logOut}>LOG OUT</ButtonForTest>
       {hiddenTextVisible && <div>Surprise</div>}
       <Table
         loading={isLoading}

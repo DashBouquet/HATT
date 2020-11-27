@@ -1,7 +1,9 @@
 import { RMApi as Api } from './utils/api';
+import { LoginApi as ApiLogin } from './utils/api/loginApi';
 
 export type State = {
   dashboardReducer: StateDashboard;
+  loginReducer: StateLogin;
 };
 
 export type StateDashboard = {
@@ -12,6 +14,10 @@ export type StateDashboard = {
   currChar: number;
   hiddenTextVisible: boolean;
   visible: boolean;
+};
+export type StateLogin = {
+  loginToken: string;
+  LoginApi: ApiLogin;
 };
 
 export type AppContextType = {
