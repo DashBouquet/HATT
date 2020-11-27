@@ -1,24 +1,59 @@
-import React, { FC, useCallback, useContext, useState } from 'react';
+import React, { FC, useCallback } from 'react';
 import { Success, Text, H1, ButtonForTest } from './styled';
-import { AppContext } from '../../context';
 import { useFetch } from '../../hooks/useFetch';
 import { Modal, Avatar, Table, Tag, Button } from 'antd';
 import { CharCard } from '../../components';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  selectCharacterPage,
+  selectCurrChar,
+  selectCurrPage,
+  selectHiddenTextVisible,
+  selectRMApi,
+  selectTotal,
+  selectVisible,
+} from './selectors';
+import { Redirect } from 'react-router-dom';
+import { ParsedRes } from '../../types';
+import {
+  SET_CURR_CHAR,
+  SET_CURR_PAGE,
+  SET_DATA,
+  SET_MODAL_VISIBLE,
+  SET_TOKEN,
+} from '../../constants';
+import { selectToken } from '../Login/selectors';
 
 export const Dashboard: FC = () => {
-  const {
-    state: { characterPage, RMApi, total },
-    setData,
-  } = useContext(AppContext);
-  const [currPage, setCurrPage] = useState(1);
-  const [currChar, setCurrChar] = useState(1);
-  const [hiddenTextVisible, setHiddenTextVisible] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch();
+  const characterPage = useSelector(selectCharacterPage);
+  const RMApi = useSelector(selectRMApi);
+  const total = useSelector(selectTotal);
+  const currPage = useSelector(selectCurrPage);
+  const currChar = useSelector(selectCurrChar);
+  const hiddenTextVisible = useSelector(selectHiddenTextVisible);
+  const visible = useSelector(selectVisible);
+  const loginToken = useSelector(selectToken);
+  const setToStore = useCallback(
+    (payload: ParsedRes) => dispatch({ type: SET_DATA, payload }),
+    [dispatch]
+  );
   const getCharactersPage = useCallback(
     () => RMApi.getCharactersPage(currPage),
     [RMApi, currPage]
   );
-  const { isLoading, isError } = useFetch(setData, getCharactersPage);
+  const { isLoading, isError } = useFetch(setToStore, getCharactersPage);
+
+  const logOut = () => {
+    dispatch({ type: SET_TOKEN, payload: '' });
+    localStorage.removeItem('loginToken');
+  };
+  const setCurrPage = (page: number) =>
+    dispatch({ type: SET_CURR_PAGE, payload: page });
+  const setModalVisible = (payload: boolean) =>
+    dispatch({ type: SET_MODAL_VISIBLE, payload });
+  const setCurrChar = (id: number) =>
+    dispatch({ type: SET_CURR_CHAR, payload: id });
 
   const columns = [
     {
@@ -54,7 +89,7 @@ export const Dashboard: FC = () => {
           type="primary"
           onClick={() => {
             setCurrChar(id);
-            setVisible(true);
+            setModalVisible(true);
           }}
         >
           More info
@@ -62,6 +97,10 @@ export const Dashboard: FC = () => {
       ),
     },
   ];
+
+  if (!loginToken) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <Success>
@@ -72,16 +111,14 @@ export const Dashboard: FC = () => {
           centered
           footer={null}
           visible={visible}
-          onCancel={() => setVisible(false)}
+          onCancel={() => setModalVisible(false)}
           width={1000}
         >
           <CharCard charId={currChar} />
         </Modal>
       )}
       <H1>Rick&Morty App</H1>
-      <ButtonForTest onClick={() => setHiddenTextVisible(!hiddenTextVisible)}>
-        CLICK ME
-      </ButtonForTest>
+      <ButtonForTest onClick={logOut}>LOG OUT</ButtonForTest>
       {hiddenTextVisible && <div>Surprise</div>}
       <Table
         loading={isLoading}

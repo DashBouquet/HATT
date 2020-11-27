@@ -1,13 +1,27 @@
 import { RMApi as Api } from './utils/api';
+import { LoginApi as ApiLogin } from './utils/api/loginApi';
 
-export type StateType = {
+export type State = {
+  dashboardReducer: StateDashboard;
+  loginReducer: StateLogin;
+};
+
+export type StateDashboard = {
   characterPage: ParsedCharacter[];
   total: number;
   RMApi: Api;
+  currPage: number;
+  currChar: number;
+  hiddenTextVisible: boolean;
+  visible: boolean;
+};
+export type StateLogin = {
+  loginToken: string;
+  LoginApi: ApiLogin;
 };
 
 export type AppContextType = {
-  state: StateType;
+  state: StateDashboard;
   setData: (payload: ParsedRes) => void;
 };
 

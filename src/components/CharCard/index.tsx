@@ -1,17 +1,16 @@
-import React, { FC, useContext, useMemo } from 'react';
+import React, { FC, useMemo } from 'react';
 import { Descriptions } from 'antd';
 import { CardImage, EpisodeName, Container, TextWrap } from './styled';
-import { AppContext } from '../../context';
 import { ParsedCharacter } from '../../types';
+import { useSelector } from 'react-redux';
+import { selectCharacterPage } from '../../modules/Dashboard/selectors';
 
 type Props = {
   charId: number;
 };
 
 export const CharCard: FC<Props> = ({ charId }) => {
-  const {
-    state: { characterPage },
-  } = useContext(AppContext);
+  const characterPage = useSelector(selectCharacterPage);
 
   const char = useMemo(
     () => characterPage.find((item: ParsedCharacter) => item.id === charId),

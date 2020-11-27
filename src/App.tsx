@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { AppState } from './context';
 import { Layout } from './modules/Layout';
+import { AppState } from './store';
 
 export const App: FC = () => {
   return (
