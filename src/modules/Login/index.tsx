@@ -24,10 +24,10 @@ export const Login: FC = () => {
     }
     console.log('Received values of form: ', values);
   };
-  const abj = { a: 2, b: 4, g: { a: 4, g: 7 } };
-  const bbj = { c: 2, b: 2, g: { a: 3, p: 7 } };
-  const obj = mergeDeepRight(abj, bbj);
-  console.log(obj);
+  // const abj = { a: 2, b: 4, g: { a: 4, g: 7 } };
+  // const bbj = { c: 2, b: 2, g: { a: 3, p: 7 } };
+  // const obj = mergeDeepRight(abj, bbj);
+  // console.log(obj);
 
   if (loginToken) {
     return <Redirect to="/" />;
