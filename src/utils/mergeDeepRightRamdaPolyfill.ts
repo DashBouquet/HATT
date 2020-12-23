@@ -1,3 +1,10 @@
+// https://ramdajs.com/docs/#mergeDeepRight
+
+// const abj = { a: 2, b: 4, g: { a: 4, g: 7 } };
+// const bbj = { c: 2, b: 2, g: { a: 3, p: 7 } };
+// const obj = mergeDeepRight(abj, bbj);
+// console.log(obj);  { a: 2, b: 2, c: 2, g: { a: 3, g: 7, p: 7 } }
+
 const _isPlaceholder = (a: any) => {
   return (
     a != null && typeof a === 'object' && a['@@functional/placeholder'] === true
