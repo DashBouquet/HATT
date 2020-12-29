@@ -5,6 +5,7 @@ import * as serviceWorker from './serviceWorker';
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 import 'antd/dist/antd.css';
+import './App.less';
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize}

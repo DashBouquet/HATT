@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const Text = styled.span`
   font-size: 20px;
@@ -16,11 +15,7 @@ export const Logout = styled.div`
   width: 100px;
   height: 50px;
   color: grey;
-`;
-export const RouteLink = styled(Link)`
-  width: 100px;
-  height: 50px;
-  color: blue;
+  cursor: pointer;
 `;
 
 export const Success = styled.div`

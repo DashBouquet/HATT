@@ -1,3 +1,6 @@
+import { Action, Dispatch } from 'redux';
+import { SET_TOKEN } from '../../constants';
+
 type LoginData = {
   username: string;
   password: string;
@@ -25,3 +28,8 @@ export class LoginApi {
     }
   }
 }
+
+export const logOut = (dispatch: Dispatch<Action>) => {
+  dispatch({ type: SET_TOKEN, payload: '' });
+  localStorage.removeItem('loginToken');
+};

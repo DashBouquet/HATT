@@ -1,8 +1,8 @@
 import React, { FC, useCallback } from 'react';
 import makeComponentTrashable from 'trashable-react';
-import { Success, Text, H1, Logout, RouteLink } from './styled';
+import { Success, Text, H1, Logout } from './styled';
 import { useFetch } from '../../hooks/useFetch';
-import { Modal, Avatar, Table, Tag, Button } from 'antd';
+import { Modal, Avatar, Table, Tag, Button, PageHeader } from 'antd';
 import { CharCard } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -14,16 +14,15 @@ import {
   selectTotal,
   selectVisible,
 } from './selectors';
-import { Redirect } from 'react-router-dom';
 import { ParsedRes } from '../../types';
 import {
   SET_CURR_CHAR,
   SET_CURR_PAGE,
   SET_DATA,
   SET_MODAL_VISIBLE,
-  SET_TOKEN,
 } from '../../constants';
-import { selectToken } from '../Login/selectors';
+import { logOut } from '../../utils/api/loginApi';
+import { routesDashboard as routes } from '../../constants';
 
 type Props = {
   registerPromise: () => void;
@@ -38,7 +37,6 @@ export const Dashboard: FC<Props> = ({ registerPromise }) => {
   const currChar = useSelector(selectCurrChar);
   const hiddenTextVisible = useSelector(selectHiddenTextVisible);
   const visible = useSelector(selectVisible);
-  const loginToken = useSelector(selectToken);
   const setToStore = useCallback(
     (payload: ParsedRes) => dispatch({ type: SET_DATA, payload }),
     [dispatch]
@@ -49,10 +47,6 @@ export const Dashboard: FC<Props> = ({ registerPromise }) => {
   );
   const { isLoading, isError } = useFetch(setToStore, getCharactersPage);
 
-  const logOut = () => {
-    dispatch({ type: SET_TOKEN, payload: '' });
-    localStorage.removeItem('loginToken');
-  };
   const setCurrPage = (page: number) =>
     dispatch({ type: SET_CURR_PAGE, payload: page });
   const setModalVisible = (payload: boolean) =>
@@ -103,43 +97,46 @@ export const Dashboard: FC<Props> = ({ registerPromise }) => {
     },
   ];
 
-  if (!loginToken) {
-    return <Redirect to="/login" />;
-  }
-
   return (
-    <Success>
-      {isError && <div>Something went wrong...</div>}
-      {visible && (
-        <Modal
-          title="Character`s info"
-          centered
-          footer={null}
-          visible={visible}
-          onCancel={() => setModalVisible(false)}
-          width={1000}
-        >
-          <CharCard charId={currChar} />
-        </Modal>
-      )}
-      <H1>Rick&Morty App</H1>
-      <Logout onClick={logOut}>LOG OUT</Logout>
-      <RouteLink to="/unknown_css">UNKNOWN CSS WORKSHOP</RouteLink>
-      {hiddenTextVisible && <div>Surprise</div>}
-      <Table
-        loading={isLoading}
-        columns={columns}
-        pagination={{
-          defaultPageSize: 20,
-          current: currPage,
-          showSizeChanger: false,
-          total,
-          onChange: (page) => setCurrPage(page),
-        }}
-        dataSource={characterPage}
-        rowKey={(record) => record.id}
+    <>
+      <PageHeader
+        className="site-page-header"
+        title="R&M Dashboard"
+        breadcrumb={{ routes }}
+        subTitle="test task"
       />
-    </Success>
+      <Success>
+        {isError && <div>Something went wrong...</div>}
+        {visible && (
+          <Modal
+            title="Character`s info"
+            centered
+            footer={null}
+            visible={visible}
+            onCancel={() => setModalVisible(false)}
+            width={1000}
+          >
+            <CharCard charId={currChar} />
+          </Modal>
+        )}
+        <H1>Rick&Morty App</H1>
+        <Logout onClick={() => logOut(dispatch)}>LOG OUT</Logout>
+        {hiddenTextVisible && <div>Surprise</div>}
+        <Table
+          loading={isLoading}
+          columns={columns}
+          pagination={{
+            defaultPageSize: 20,
+            current: currPage,
+            showSizeChanger: false,
+            total,
+            onChange: (page) => setCurrPage(page),
+          }}
+          dataSource={characterPage}
+          rowKey={(record) => record.id}
+        />
+      </Success>
+    </>
   );
 };
 
