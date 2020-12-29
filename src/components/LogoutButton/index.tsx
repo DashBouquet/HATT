@@ -1,18 +1,17 @@
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
+import logo from '../../assets/images/dblogo.png';
 import { logOut } from '../../utils/api/loginApi';
-import { Logo, LogoutText } from './styled';
-import './styles.css';
+import { Button, Logo, LogoutText } from './styled';
 
 export const LogoutButton: FC = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="button" onClick={() => logOut(dispatch)}>
-      <Logo src="https://avatars3.githubusercontent.com/u/10573733?s=200&v=4" />
+    <Button onClick={() => logOut(dispatch)}>
+      <Logo src={logo} />
 
       <LogoutText>LOGOUT</LogoutText>
-      {/* <div className="logout">LOGOUT</div> */}
-    </div>
+    </Button>
   );
 };
