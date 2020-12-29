@@ -1,22 +1,16 @@
 import React, { FC } from 'react';
-import { Logout } from './styled';
-import { routesCss as routes } from '../../constants';
-import { PageHeader } from 'antd';
-import { useDispatch } from 'react-redux';
-import { logOut } from '../../utils/api/loginApi';
+import { PageWrapper } from './styled';
+import { routesCss } from '../../constants';
+import { AppHeader } from '../../components/AppHeader';
 
 export const CssWorkshop: FC = () => {
-  const dispatch = useDispatch();
-
   return (
-    <>
-      <PageHeader
-        className="site-page-header"
+    <PageWrapper>
+      <AppHeader
         title="Unknown Css Properties"
-        breadcrumb={{ routes }}
         subTitle="workshop DB"
+        routes={routesCss}
       />
-      <Logout onClick={() => logOut(dispatch)}>LOG OUT</Logout>
-    </>
+    </PageWrapper>
   );
 };

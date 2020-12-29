@@ -1,8 +1,8 @@
 import React, { FC, useCallback } from 'react';
 import makeComponentTrashable from 'trashable-react';
-import { Success, Text, H1, Logout } from './styled';
+import { Success, Text } from './styled';
 import { useFetch } from '../../hooks/useFetch';
-import { Modal, Avatar, Table, Tag, Button, PageHeader } from 'antd';
+import { Modal, Avatar, Table, Tag, Button } from 'antd';
 import { CharCard } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -21,8 +21,8 @@ import {
   SET_DATA,
   SET_MODAL_VISIBLE,
 } from '../../constants';
-import { logOut } from '../../utils/api/loginApi';
-import { routesDashboard as routes } from '../../constants';
+import { routesDashboard } from '../../constants';
+import { AppHeader } from '../../components/AppHeader';
 
 type Props = {
   registerPromise: () => void;
@@ -99,11 +99,10 @@ export const Dashboard: FC<Props> = ({ registerPromise }) => {
 
   return (
     <>
-      <PageHeader
-        className="site-page-header"
+      <AppHeader
         title="R&M Dashboard"
-        breadcrumb={{ routes }}
         subTitle="test task"
+        routes={routesDashboard}
       />
       <Success>
         {isError && <div>Something went wrong...</div>}
@@ -119,8 +118,6 @@ export const Dashboard: FC<Props> = ({ registerPromise }) => {
             <CharCard charId={currChar} />
           </Modal>
         )}
-        <H1>Rick&Morty App</H1>
-        <Logout onClick={() => logOut(dispatch)}>LOG OUT</Logout>
         {hiddenTextVisible && <div>Surprise</div>}
         <Table
           loading={isLoading}
