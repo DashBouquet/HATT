@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { PageWrapper } from './styled';
-import { routesCss } from '../../constants';
+import { PageWrapper, GridContainer } from './styled';
+import { routesCss, cssRulesArray } from '../../constants';
 import { AppHeader } from '../../components/AppHeader';
 
 export const CssWorkshop: FC = () => {
@@ -11,6 +11,15 @@ export const CssWorkshop: FC = () => {
         subTitle="workshop DB"
         routes={routesCss}
       />
+      <GridContainer>
+        {cssRulesArray.map((item: string, i: number) => {
+          return (
+            <span key={`rule${i}`}>
+              {i + 1}. {item}
+            </span>
+          );
+        })}
+      </GridContainer>
     </PageWrapper>
   );
 };

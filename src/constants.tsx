@@ -41,7 +41,7 @@ export const routesDashboard = [
   },
 ];
 
-const cssRulesArray = [
+export const cssRulesArray = [
   'all',
   'azimuth',
   'bleed',
