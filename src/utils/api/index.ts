@@ -3,10 +3,12 @@ import { CharacterSchema, LocationSchema } from '../../types';
 export class RMApi {
   _apiBase = 'https://rickandmortyapi.com/api/';
 
-  getCharactersPage = async (page?: number) => {
-    const res = await this.getResource(`/character/?page=${page ? page : 1}`);
-    const characterPage = await Promise.all(
-      res.results.map(this._transformCharacter)
+  getCharactersPage = async (registerPromise: any, page?: number) => {
+    const res = await registerPromise(
+      this.getResource(`/character/?page=${page ? page : 1}`)
+    );
+    const characterPage = await registerPromise(
+      Promise.all(res.results.map(this._transformCharacter))
     );
     return { characterPage, total: res.info.count };
   };

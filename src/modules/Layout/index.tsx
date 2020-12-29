@@ -1,8 +1,9 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import { SET_TOKEN } from '../../constants';
-import { Dashboard } from '../Dashboard';
+import { CssWorkshop } from '../CssWorkshop';
+import Dashboard from '../Dashboard';
 import { Login } from '../Login';
 
 export const Layout: FC = () => {
@@ -14,7 +15,8 @@ export const Layout: FC = () => {
   return (
     <Router>
       <Route path="/login" component={Login} />
-      <Route path="/" component={Dashboard} />
+      <Route exact path="/" component={Dashboard} />
+      <Route exact path="/unknown_css" component={CssWorkshop} />
     </Router>
   );
 };

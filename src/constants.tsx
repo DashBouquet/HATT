@@ -12,3 +12,14 @@ export const DEFAULT_DATA = {
 
 //login
 export const SET_TOKEN = 'SET_TOKEN';
+
+export const routes = [
+  {
+    path: '/',
+    breadcrumbName: 'HATT',
+  },
+  {
+    path: '/unknown_css',
+    breadcrumbName: 'Unknown Css Workshop',
+  },
+];

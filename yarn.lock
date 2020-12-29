@@ -11243,6 +11243,18 @@ tr46@^1.0.1:
   dependencies:
     punycode "^2.1.0"
 
+trashable-react@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/trashable-react/-/trashable-react-1.1.0.tgz#17061b8fd4a8167048e33aa6eaa1a308eeffa1e7"
+  integrity sha512-3QaIPj52VwSbbgUH4qDqrAg8NFl7bQOvbo6ULi7IdLUawQu/37QBx1yKlUNF9JVr3OWuAzJoL0SyX27lFJUk+w==
+  dependencies:
+    trashable "^1.0.6"
+
+trashable@^1.0.6:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/trashable/-/trashable-1.0.7.tgz#0a3f6882af397aa39f8de93b8bb2118e295cdfe7"
+  integrity sha512-yDEVYO8VPqaWZg2yulq6xoUYB9XPdWeWCXepDSTp4yAfS8++mOcHXhlvzxP4/aG4MMfbIc5FV1k86KquqQuGwg==
+
 ts-pnp@1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.1.6.tgz#389a24396d425a0d3162e96d2b4638900fdc289a"

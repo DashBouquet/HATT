@@ -1,5 +1,6 @@
 import React, { FC, useCallback } from 'react';
-import { Success, Text, H1, ButtonForTest } from './styled';
+import makeComponentTrashable from 'trashable-react';
+import { Success, Text, H1, Logout, RouteLink } from './styled';
 import { useFetch } from '../../hooks/useFetch';
 import { Modal, Avatar, Table, Tag, Button } from 'antd';
 import { CharCard } from '../../components';
@@ -24,7 +25,11 @@ import {
 } from '../../constants';
 import { selectToken } from '../Login/selectors';
 
-export const Dashboard: FC = () => {
+type Props = {
+  registerPromise: () => void;
+};
+
+export const Dashboard: FC<Props> = ({ registerPromise }) => {
   const dispatch = useDispatch();
   const characterPage = useSelector(selectCharacterPage);
   const RMApi = useSelector(selectRMApi);
@@ -39,8 +44,8 @@ export const Dashboard: FC = () => {
     [dispatch]
   );
   const getCharactersPage = useCallback(
-    () => RMApi.getCharactersPage(currPage),
-    [RMApi, currPage]
+    () => RMApi.getCharactersPage(registerPromise, currPage),
+    [RMApi, currPage, registerPromise]
   );
   const { isLoading, isError } = useFetch(setToStore, getCharactersPage);
 
@@ -118,7 +123,8 @@ export const Dashboard: FC = () => {
         </Modal>
       )}
       <H1>Rick&Morty App</H1>
-      <ButtonForTest onClick={logOut}>LOG OUT</ButtonForTest>
+      <Logout onClick={logOut}>LOG OUT</Logout>
+      <RouteLink to="/unknown_css">UNKNOWN CSS WORKSHOP</RouteLink>
       {hiddenTextVisible && <div>Surprise</div>}
       <Table
         loading={isLoading}
@@ -136,3 +142,5 @@ export const Dashboard: FC = () => {
     </Success>
   );
 };
+
+export default makeComponentTrashable(Dashboard);
