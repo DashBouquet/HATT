@@ -46,7 +46,6 @@ export const cssRulesArray = [
   'azimuth',
   'bleed',
   'border-image',
-  'bottom',
   'box-decoration-break',
   'break-after',
   'break-before',
