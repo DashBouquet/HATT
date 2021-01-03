@@ -31,6 +31,7 @@ export const Order = styled.p`
 `;
 export const Description = styled.div`
   text-align: right;
+  margin-right: 15px;
 `;
 
 //________________
@@ -42,6 +43,7 @@ export const Blockquote = styled.blockquote`
 
 export const Syntax = styled.span`
   color: orange;
+  margin-top: 55px;
 `;
 export const Img = styled.img`
   width: 400px;
@@ -62,4 +64,40 @@ export const ImgWithBorder = styled.img`
   border-image-repeat: round;
   border-image-slice: 70 fill;
   border-radius: 50%;
+`;
+
+export const BoxDecBreakSlice = styled.span`
+  box-decoration-break: slice;
+  -webkit-box-decoration-break: slice;
+  box-shadow: 6px 6px 5px 0 #ff1493, -5px -5px 5px 0 #00f, 5px 5px 15px 0 #ff0;
+  background: linear-gradient(to bottom right, #fffd55, #387d22);
+  padding: 0 1em;
+  border-radius: 16px;
+  border-style: solid;
+  font: 16px sans-serif;
+  line-height: 2;
+`;
+export const BoxDecBreakClone = styled(BoxDecBreakSlice)`
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+`;
+
+export const BreakExampleAfter = styled.div`
+  background-color: #eee;
+  padding: 5px;
+  column-count: 3;
+  column-rule: 2px dotted #ccc;
+  & hr {
+    break-after: column;
+  }
+`;
+
+export const BreakExampleBefore = styled(BreakExampleAfter)`
+  & hr {
+    break-before: column;
+  }
+`;
+export const CaptionSideWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;

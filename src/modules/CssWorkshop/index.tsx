@@ -12,12 +12,18 @@ import {
   BorderImage,
   BorderGradient,
   ImgWithBorder,
+  BoxDecBreakClone,
+  BoxDecBreakSlice,
+  BreakExampleAfter,
+  BreakExampleBefore,
+  CaptionSideWrapper,
 } from './styled';
 import { routesCss, cssRulesArray } from '../../constants';
 import { AppHeader } from '../../components/AppHeader';
 import azimuth from '../../assets/images/azimuth.png';
 import bleed from '../../assets/images/bleed.png';
 import jedais from '../../assets/images/jedais.jpg';
+import captionside from '../../assets/images/captionside.png';
 
 export const CssWorkshop: FC = () => {
   return (
@@ -85,35 +91,57 @@ export const CssWorkshop: FC = () => {
           <Rule>
             <Order>5.</Order> box-decoration-break
           </Rule>
-          <div>example1</div>
+          <Description>
+            <BoxDecBreakSlice>
+              The box-decoration-break CSS <br /> property specifies how an
+              element`s <br />
+            </BoxDecBreakSlice>
+            <BoxDecBreakClone>
+              fragments should be rendered when <br />
+              broken across multiple lines, columns, or pages.
+            </BoxDecBreakClone>
+            <br />
+            <strong>Syntax: </strong>
+            <Syntax>slice | clone | initial | inherit | unset</Syntax>
+          </Description>
         </RuleWrapper>
         <RuleWrapper>
           <Rule>
-            <Order>6.</Order> break-after
+            <Order>6.</Order> break-(after/before/inside)
           </Rule>
-          <div>example1</div>
+          <Description>
+            <BreakExampleAfter>
+              (After) This CSS properties sets how
+              <hr /> page, column, or region breaks should behave before a
+              generated box. If there is no generated box, the property is
+              ignored.
+            </BreakExampleAfter>
+            <br />
+            <BreakExampleBefore>
+              (Before) If there is no generated box, the property is ignored.
+              <hr />
+              Some sources claim that this property is obsolete.ere is no
+              generated box, the property is ignored.
+            </BreakExampleBefore>
+          </Description>
         </RuleWrapper>
         <RuleWrapper>
           <Rule>
-            <Order>7.</Order> break-before
+            <Order>7.</Order> caption-side
           </Rule>
-          <div>example1</div>
+          <Description>
+            <CaptionSideWrapper>
+              <span>
+                The caption-side property specifies the placement of a table
+                caption. Usually used on the table tag.
+              </span>
+              <Img src={captionside} />
+            </CaptionSideWrapper>
+          </Description>
         </RuleWrapper>
         <RuleWrapper>
           <Rule>
-            <Order>8.</Order> break-inside
-          </Rule>
-          <div>example1</div>
-        </RuleWrapper>
-        <RuleWrapper>
-          <Rule>
-            <Order>9.</Order> caption-side
-          </Rule>
-          <div>example1</div>
-        </RuleWrapper>
-        <RuleWrapper>
-          <Rule>
-            <Order>10.</Order> caret-color
+            <Order>8.</Order> caret-color
           </Rule>
           <div>example1</div>
         </RuleWrapper>
