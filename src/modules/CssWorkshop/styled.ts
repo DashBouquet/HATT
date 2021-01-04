@@ -45,19 +45,23 @@ export const Syntax = styled.span`
   color: orange;
   margin-top: 55px;
 `;
+
 export const Img = styled.img`
   width: 400px;
 `;
+
 export const BorderGradient = styled.div`
   width: 100px;
   height: 100px;
   border: 30px solid;
   border-image: linear-gradient(#f6b73c, #4d9f0c) 30;
 `;
+
 export const BorderImage = styled(BorderGradient)`
   border-image: url('http://usabili.ru/news_imgs/151/border7.png') 120 100 140
     fill / auto / 36px 30px 58px 28px repeat stretch;
 `;
+
 export const ImgWithBorder = styled.img`
   border: 45px solid transparent;
   border-image-source: url('//img-fotki.yandex.ru/get/9754/5091629.9a/0_7eb4a_a1904500_L.png');
@@ -77,6 +81,7 @@ export const BoxDecBreakSlice = styled.span`
   font: 16px sans-serif;
   line-height: 2;
 `;
+
 export const BoxDecBreakClone = styled(BoxDecBreakSlice)`
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
@@ -97,7 +102,35 @@ export const BreakExampleBefore = styled(BreakExampleAfter)`
     break-before: column;
   }
 `;
+
 export const CaptionSideWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+export const Input = styled.input`
+  caret-color: auto;
+  display: block;
+  width: 800px;
+  padding: 3px;
+  margin-bottom: 0.5em;
+`;
+export const InputCustom = styled(Input)`
+  caret-color: red;
+`;
+
+export const EditableP = styled.p`
+  caret-color: green;
+  text-align: left;
+  padding: 3px;
+`;
+
+export const ClipPath = styled.img`
+  clip-path: polygon(50% 0px, 100% 50%, 50% 100%, 0px 50%);
+`;
+export const ClipPath2 = styled.img`
+  clip-path: ellipse(130px 140px at 10% 20%);
+`;
+export const ClipPath3 = styled.img`
+  clip-path: circle(40%);
 `;

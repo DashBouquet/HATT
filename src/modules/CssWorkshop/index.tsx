@@ -17,6 +17,12 @@ import {
   BreakExampleAfter,
   BreakExampleBefore,
   CaptionSideWrapper,
+  Input,
+  InputCustom,
+  EditableP,
+  ClipPath,
+  ClipPath2,
+  ClipPath3,
 } from './styled';
 import { routesCss, cssRulesArray } from '../../constants';
 import { AppHeader } from '../../components/AppHeader';
@@ -24,6 +30,7 @@ import azimuth from '../../assets/images/azimuth.png';
 import bleed from '../../assets/images/bleed.png';
 import jedais from '../../assets/images/jedais.jpg';
 import captionside from '../../assets/images/captionside.png';
+import baloon from '../../assets/images/balloon-small.jpg';
 
 export const CssWorkshop: FC = () => {
   return (
@@ -135,7 +142,7 @@ export const CssWorkshop: FC = () => {
                 The caption-side property specifies the placement of a table
                 caption. Usually used on the table tag.
               </span>
-              <Img src={captionside} />
+              <img src={captionside} width={600} />
             </CaptionSideWrapper>
           </Description>
         </RuleWrapper>
@@ -143,19 +150,35 @@ export const CssWorkshop: FC = () => {
           <Rule>
             <Order>8.</Order> caret-color
           </Rule>
-          <div>example1</div>
+          <Description>
+            <Input value="This field uses a default caret." />
+            <InputCustom className="custom" value="I have red caret color!" />
+            <EditableP contentEditable>I have green caret color!</EditableP>
+          </Description>
         </RuleWrapper>
         <RuleWrapper>
           <Rule>
-            <Order>11.</Order> clear
+            <Order>9.</Order> clear
           </Rule>
-          <div>example1</div>
+          <Description>
+            The clear CSS property sets whether an element must be moved below
+            (cleared) floating elements that precede it. The clear property
+            applies to floating and non-floating elements. Relevant for
+            supporting old browsers or working with old code.
+          </Description>
         </RuleWrapper>
         <RuleWrapper>
           <Rule>
-            <Order>12.</Order> clip
+            <Order>10.</Order> clip (clip-path)
           </Rule>
-          <div>example1</div>
+          <Description>
+            This property creates a clipping region that sets what part of an
+            element should be shown. Parts that are inside the region are shown,
+            while those outside are hidden. Can be used with HTML and SVG.
+            <ClipPath src={baloon} width="150" />
+            <ClipPath2 src={baloon} width="150" />
+            <ClipPath3 src={baloon} width="150" />
+          </Description>
         </RuleWrapper>
         <RuleWrapper>
           <Rule>
