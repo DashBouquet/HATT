@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { HeaderWrapper } from './styled';
 import { Breadcrumb } from '../../constants';
-import { PageHeader } from 'antd';
 import { LogoutButton } from '../LogoutButton';
 
 type Props = {
@@ -13,12 +12,13 @@ type Props = {
 export const AppHeader: FC<Props> = ({ title, subTitle, routes }) => {
   return (
     <HeaderWrapper>
-      <PageHeader
-        className="site-page-header"
-        title={title}
-        breadcrumb={{ routes }}
-        subTitle={subTitle}
-      />
+      <div>
+        <div></div>
+        <div>
+          <span>{title}</span>
+          <span>{subTitle}</span>
+        </div>
+      </div>
       <LogoutButton />
     </HeaderWrapper>
   );

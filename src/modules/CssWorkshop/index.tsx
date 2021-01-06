@@ -24,7 +24,7 @@ import {
   ClipPath2,
   ClipPath3,
 } from './styled';
-import { routesCss, cssRulesArray } from '../../constants';
+import { routesCss } from '../../constants';
 import { AppHeader } from '../../components/AppHeader';
 import azimuth from '../../assets/images/azimuth.png';
 import bleed from '../../assets/images/bleed.png';
@@ -142,7 +142,7 @@ export const CssWorkshop: FC = () => {
                 The caption-side property specifies the placement of a table
                 caption. Usually used on the table tag.
               </span>
-              <img src={captionside} width={600} />
+              <img src={captionside} width={600} alt="caption side example" />
             </CaptionSideWrapper>
           </Description>
         </RuleWrapper>
