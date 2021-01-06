@@ -99,12 +99,6 @@ export const Dashboard: FC<Props> = ({ registerPromise }) => {
 
   return (
     <>
-      <PageHeader
-        className="site-page-header"
-        title="R&M Dashboard"
-        breadcrumb={{ routes }}
-        subTitle="test task"
-      />
       <Success>
         {isError && <div>Something went wrong...</div>}
         {visible && (

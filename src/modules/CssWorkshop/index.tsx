@@ -10,12 +10,6 @@ export const CssWorkshop: FC = () => {
 
   return (
     <>
-      <PageHeader
-        className="site-page-header"
-        title="Unknown Css Properties"
-        breadcrumb={{ routes }}
-        subTitle="workshop DB"
-      />
       <Logout onClick={() => logOut(dispatch)}>LOG OUT</Logout>
     </>
   );
