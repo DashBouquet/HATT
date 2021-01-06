@@ -1,6 +1,6 @@
 import React, { FC, useCallback } from 'react';
 import makeComponentTrashable from 'trashable-react';
-import { Success, Text } from './styled';
+import { Text } from './styled';
 import { useFetch } from '../../hooks/useFetch';
 import { Modal, Avatar, Table, Tag, Button } from 'antd';
 import { CharCard } from '../../components';
@@ -23,6 +23,7 @@ import {
 } from '../../constants';
 import { routesDashboard } from '../../constants';
 import { AppHeader } from '../../components/AppHeader';
+import { PageWrapper } from '../../typography';
 
 type Props = {
   registerPromise: () => void;
@@ -98,42 +99,41 @@ export const Dashboard: FC<Props> = ({ registerPromise }) => {
   ];
 
   return (
-    <>
+    <PageWrapper>
       <AppHeader
         title="R&M Dashboard"
         subTitle="test task"
         routes={routesDashboard}
       />
-      <Success>
-        {isError && <div>Something went wrong...</div>}
-        {visible && (
-          <Modal
-            title="Character`s info"
-            centered
-            footer={null}
-            visible={visible}
-            onCancel={() => setModalVisible(false)}
-            width={1000}
-          >
-            <CharCard charId={currChar} />
-          </Modal>
-        )}
-        {hiddenTextVisible && <div>Surprise</div>}
-        <Table
-          loading={isLoading}
-          columns={columns}
-          pagination={{
-            defaultPageSize: 20,
-            current: currPage,
-            showSizeChanger: false,
-            total,
-            onChange: (page) => setCurrPage(page),
-          }}
-          dataSource={characterPage}
-          rowKey={(record) => record.id}
-        />
-      </Success>
-    </>
+
+      {isError && <div>Something went wrong...</div>}
+      {visible && (
+        <Modal
+          title="Character`s info"
+          centered
+          footer={null}
+          visible={visible}
+          onCancel={() => setModalVisible(false)}
+          width={1000}
+        >
+          <CharCard charId={currChar} />
+        </Modal>
+      )}
+      {hiddenTextVisible && <div>Surprise</div>}
+      <Table
+        loading={isLoading}
+        columns={columns}
+        pagination={{
+          defaultPageSize: 20,
+          current: currPage,
+          showSizeChanger: false,
+          total,
+          onChange: (page) => setCurrPage(page),
+        }}
+        dataSource={characterPage}
+        rowKey={(record) => record.id}
+      />
+    </PageWrapper>
   );
 };
 

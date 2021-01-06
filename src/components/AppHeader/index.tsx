@@ -1,5 +1,11 @@
 import React, { FC } from 'react';
-import { HeaderWrapper } from './styled';
+import { WorkshopHeaderWrapper, TitlesWrapper } from './styled';
+import {
+  CurrRouteName,
+  LinkText,
+  PageSubTitle,
+  PageTitle,
+} from '../../typography';
 import { Breadcrumb } from '../../constants';
 import { LogoutButton } from '../LogoutButton';
 
@@ -11,15 +17,32 @@ type Props = {
 
 export const AppHeader: FC<Props> = ({ title, subTitle, routes }) => {
   return (
-    <HeaderWrapper>
+    <WorkshopHeaderWrapper>
       <div>
-        <div></div>
         <div>
-          <span>{title}</span>
-          <span>{subTitle}</span>
+          {routes.map(({ path, breadcrumbName }, i) => {
+            if (i + 1 === routes.length)
+              return (
+                <CurrRouteName key={`breadcrumbName${i}`}>
+                  {breadcrumbName}
+                </CurrRouteName>
+              );
+            return (
+              <span key={`breadcrumbName${i}`}>
+                <LinkText key={`breadcrumbName${i}`} to={path}>
+                  {breadcrumbName}
+                </LinkText>
+                <CurrRouteName> /</CurrRouteName>
+              </span>
+            );
+          })}
         </div>
+        <TitlesWrapper>
+          <PageTitle>{title}</PageTitle>
+          <PageSubTitle>{subTitle}</PageSubTitle>
+        </TitlesWrapper>
       </div>
       <LogoutButton />
-    </HeaderWrapper>
+    </WorkshopHeaderWrapper>
   );
 };

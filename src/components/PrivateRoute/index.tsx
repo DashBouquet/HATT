@@ -17,7 +17,6 @@ export const PrivateRoute: FC<Props> = ({
     <Route
       {...rest}
       render={(props) => {
-        console.log(props.location);
         return isLoggedIn ? (
           <Component {...props} />
         ) : (

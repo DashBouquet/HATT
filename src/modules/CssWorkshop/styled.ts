@@ -1,11 +1,10 @@
 import styled from 'styled-components';
+import {
+  CssRuleDescription,
+  CssRuleName,
+  CurrRouteName,
+} from '../../typography';
 
-export const PageWrapper = styled.div`
-  /* padding: 20px; */
-`;
-export const MainWrapper = styled.main`
-  padding: 24px;
-`;
 export const RuleWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -15,39 +14,29 @@ export const RuleWrapper = styled.div`
   border-right: 1px solid grey;
   border-left: 1px solid grey;
 `;
-export const Rule = styled.div`
+
+export const Order = styled(CssRuleName)`
+  min-width: 40px;
+`;
+
+export const Rule = styled(CssRuleName)`
   display: flex;
   align-items: flex-end;
-  font-size: 24px;
-  font-family: 'Oswald', sans-serif;
-  letter-spacing: 3px;
   min-width: 30%;
 `;
-export const Order = styled.p`
-  width: 40px;
-  font-size: 24px;
-  font-family: 'Oswald', sans-serif;
-  letter-spacing: 3px;
-`;
+
 export const Description = styled.div`
   text-align: right;
   margin-right: 15px;
+  min-width: 50%;
 `;
 
 //________________
 
-export const Blockquote = styled.blockquote`
-  all: unset;
+export const Blockquote = styled(CurrRouteName)`
   color: red;
-`;
-
-export const Syntax = styled.span`
-  color: orange;
-  margin-top: 55px;
-`;
-
-export const Img = styled.img`
-  width: 400px;
+  margin-bottom: 30px;
+  all: unset;
 `;
 
 export const BorderGradient = styled.div`
@@ -103,26 +92,23 @@ export const BreakExampleBefore = styled(BreakExampleAfter)`
   }
 `;
 
-export const CaptionSideWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
 export const Input = styled.input`
   caret-color: auto;
   display: block;
-  width: 800px;
+  width: 100%;
   padding: 3px;
   margin-bottom: 0.5em;
+  font: 600 24px 'Montserrat', sans-serif;
 `;
 export const InputCustom = styled(Input)`
   caret-color: red;
 `;
 
-export const EditableP = styled.p`
+export const EditableP = styled(CssRuleDescription)`
   caret-color: green;
   text-align: left;
-  padding: 3px;
+  padding: 8px 13px;
+  width: 100%;
 `;
 
 export const ClipPath = styled.img`
