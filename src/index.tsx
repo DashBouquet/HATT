@@ -5,7 +5,6 @@ import * as serviceWorker from './serviceWorker';
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 import 'antd/dist/antd.css';
-import './App.less';
 import Oswald from './assets/fonts/oswald-regular.woff2';
 import Montserrat from './assets/fonts/Montserrat-Regular.woff2';
 
