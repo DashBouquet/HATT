@@ -172,23 +172,28 @@ export const CssWorkshop: FC = () => {
             <Order>10.</Order> clip (clip-path)
           </Rule>
           <Description>
-            This property creates a clipping region that sets what part of an
-            element should be shown. Parts that are inside the region are shown,
-            while those outside are hidden. Can be used with HTML and SVG.
-            <ClipPath src={baloon} width="150" />
-            <ClipPath2 src={baloon} width="150" />
-            <ClipPath3 src={baloon} width="150" />
+            <CaptionSideWrapper>
+              <span>
+                This property creates a clipping region that sets what part of
+                an element should be shown. Parts that are inside the region are
+                shown, while those outside are hidden. Can be used with HTML and
+                SVG.{' '}
+              </span>
+              <ClipPath src={baloon} width="130" />
+              <ClipPath2 src={baloon} width="130" />
+              <ClipPath3 src={baloon} width="130" />
+            </CaptionSideWrapper>
           </Description>
         </RuleWrapper>
         <RuleWrapper>
           <Rule>
-            <Order>13.</Order> color-interpolation-filters
+            <Order>11.</Order> color-interpolation-filters
           </Rule>
           <div>example1</div>
         </RuleWrapper>
         <RuleWrapper>
           <Rule>
-            <Order>14.</Order> column-count
+            <Order>13.</Order> column-count
           </Rule>
           <div>example1</div>
         </RuleWrapper>

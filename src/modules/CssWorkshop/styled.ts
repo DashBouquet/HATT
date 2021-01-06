@@ -127,10 +127,11 @@ export const EditableP = styled.p`
 
 export const ClipPath = styled.img`
   clip-path: polygon(50% 0px, 100% 50%, 50% 100%, 0px 50%);
+  margin-left: 15px;
 `;
-export const ClipPath2 = styled.img`
+export const ClipPath2 = styled(ClipPath)`
   clip-path: ellipse(130px 140px at 10% 20%);
 `;
-export const ClipPath3 = styled.img`
+export const ClipPath3 = styled(ClipPath)`
   clip-path: circle(40%);
 `;
