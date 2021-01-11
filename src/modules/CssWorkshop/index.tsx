@@ -19,20 +19,20 @@ import {
   ClipPath2,
   ClipPath3,
 } from './styled';
-import { routesCss } from '../../constants';
-import { AppHeader } from '../../components/AppHeader';
-import azimuth from '../../assets/images/azimuth.png';
-import bleed from '../../assets/images/bleed.png';
-import jedais from '../../assets/images/jedais.jpg';
-import captionside from '../../assets/images/captionside.png';
-import baloon from '../../assets/images/balloon-small.jpg';
+import azimuth from 'assets/images/azimuth.png';
+import bleed from 'assets/images/bleed.png';
+import jedais from 'assets/images/jedais.jpg';
+import captionside from 'assets/images/captionside.png';
+import baloon from 'assets/images/balloon-small.jpg';
+import { routesCss } from 'Constants';
+import { AppHeader } from 'components';
 import {
   CssRuleDeprecated,
   CssRuleDescription,
   CssRuleExperimental,
   HeaderWrapper,
   PageWrapper,
-} from '../../typography';
+} from 'typography';
 
 export const CssWorkshop: FC = () => {
   return (

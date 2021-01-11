@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { SET_TOKEN } from '../../constants';
+import { SET_TOKEN } from '../../Constants';
 import { StateLogin } from '../../types';
 import { LoginApi as Api } from '../../utils/api/loginApi';
 

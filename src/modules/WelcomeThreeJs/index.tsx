@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { LogoutButton } from '../../components/LogoutButton';
-import { ButtonText, PageWrapper, HeaderWrapper } from '../../typography';
+import { LogoutButton } from 'components/LogoutButton';
+import { ButtonText, PageWrapper, HeaderWrapper } from 'typography';
 
 import { RouteLink } from './styled';
 

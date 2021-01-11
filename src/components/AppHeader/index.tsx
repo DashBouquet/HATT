@@ -1,13 +1,8 @@
 import React, { FC } from 'react';
 import { WorkshopHeaderWrapper, TitlesWrapper } from './styled';
-import {
-  CurrRouteName,
-  LinkText,
-  PageSubTitle,
-  PageTitle,
-} from '../../typography';
-import { Breadcrumb } from '../../constants';
+import { CurrRouteName, LinkText, PageSubTitle, PageTitle } from 'typography';
 import { LogoutButton } from '../LogoutButton';
+import { Breadcrumb } from 'types';
 
 type Props = {
   title: string;

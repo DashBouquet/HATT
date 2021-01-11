@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { HeaderWrapper } from '../../typography';
+import { HeaderWrapper } from 'typography';
 
 export const WorkshopHeaderWrapper = styled(HeaderWrapper)`
   align-items: flex-start;

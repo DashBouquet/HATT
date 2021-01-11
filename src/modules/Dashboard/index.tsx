@@ -1,9 +1,9 @@
 import React, { FC, useCallback } from 'react';
 import makeComponentTrashable from 'trashable-react';
 import { Text } from './styled';
-import { useFetch } from '../../hooks/useFetch';
+import { useFetch } from 'hooks/useFetch';
 import { Modal, Avatar, Table, Tag, Button } from 'antd';
-import { CharCard } from '../../components';
+import { CharCard, AppHeader } from 'components';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectCharacterPage,
@@ -14,16 +14,15 @@ import {
   selectTotal,
   selectVisible,
 } from './selectors';
-import { ParsedRes } from '../../types';
+import { ParsedRes } from 'types';
 import {
   SET_CURR_CHAR,
   SET_CURR_PAGE,
   SET_DATA,
   SET_MODAL_VISIBLE,
-} from '../../constants';
-import { routesDashboard } from '../../constants';
-import { AppHeader } from '../../components/AppHeader';
-import { PageWrapper } from '../../typography';
+  routesDashboard,
+} from 'Constants';
+import { PageWrapper } from 'typography';
 
 type Props = {
   registerPromise: () => void;

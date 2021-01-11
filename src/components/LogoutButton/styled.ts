@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ButtonText } from '../../typography';
+import { ButtonText } from 'typography';
 
 export const Logo = styled.img`
   width: 25px;

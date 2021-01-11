@@ -1,9 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Loader } from '../../components/Loader';
-import { PrivateRoute } from '../../components/PrivateRoute';
-import { SET_TOKEN } from '../../constants';
+import { Loader, PrivateRoute } from 'components';
+import { SET_TOKEN } from 'Constants';
 import { CssWorkshop } from '../CssWorkshop';
 import Dashboard from '../Dashboard';
 import { Login } from '../Login';

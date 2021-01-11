@@ -1,5 +1,5 @@
 import { Action, Dispatch } from 'redux';
-import { SET_TOKEN } from '../../constants';
+import { SET_TOKEN } from 'Constants';
 
 type LoginData = {
   username: string;

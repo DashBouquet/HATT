@@ -5,7 +5,7 @@ import {
   SET_CURR_CHAR,
   SET_TEXT_VISIBLE,
   SET_MODAL_VISIBLE,
-} from '../../constants';
+} from '../../Constants';
 import { StateDashboard } from '../../types';
 import { RMApi as Api } from '../../utils/api';
 

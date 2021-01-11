@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectLoginApi, selectToken } from './selectors';
 import { LoginFailed, StyledBtn, StyledForm, Wrapper } from './styled';
-import { SET_TOKEN } from '../../constants';
+import { SET_TOKEN } from 'Constants';
 
 export const Login: FC = () => {
   const dispatch = useDispatch();

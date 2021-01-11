@@ -1,9 +1,9 @@
 import React, { FC, useMemo } from 'react';
 import { Descriptions } from 'antd';
 import { CardImage, EpisodeName, Container, TextWrap } from './styled';
-import { ParsedCharacter } from '../../types';
+import { ParsedCharacter } from 'types';
 import { useSelector } from 'react-redux';
-import { selectCharacterPage } from '../../modules/Dashboard/selectors';
+import { selectCharacterPage } from 'modules/Dashboard/selectors';
 
 type Props = {
   charId: number;

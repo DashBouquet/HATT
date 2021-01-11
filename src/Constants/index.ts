@@ -13,12 +13,6 @@ export const DEFAULT_DATA = {
 //login
 export const SET_TOKEN = 'SET_TOKEN';
 
-// breadcrumbs
-export type Breadcrumb = {
-  path: string;
-  breadcrumbName: string;
-};
-
 export const routesCss = [
   {
     path: '/',

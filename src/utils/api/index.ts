@@ -1,5 +1,5 @@
-import { DEFAULT_DATA } from '../../constants';
-import { CharacterSchema, LocationSchema } from '../../types';
+import { DEFAULT_DATA } from 'Constants';
+import { CharacterSchema, LocationSchema } from 'types';
 export class RMApi {
   _apiBase = 'https://rickandmortyapi.com/api/';
 

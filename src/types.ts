@@ -81,3 +81,8 @@ export type ExtractedLocNumbers = {
   origin: number;
   location: number;
 };
+
+export type Breadcrumb = {
+  path: string;
+  breadcrumbName: string;
+};

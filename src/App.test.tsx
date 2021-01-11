@@ -2,7 +2,7 @@ import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { App } from './App';
-import { RMApi as Api } from './utils/api';
+import { RMApi as Api } from 'utils/api';
 
 const RMApi = new Api();
 const mockGetCharPage = (RMApi.getCharactersPage = jest.fn());

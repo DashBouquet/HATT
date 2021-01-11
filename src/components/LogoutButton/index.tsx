@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import logo from '../../assets/images/dblogo.png';
+import logo from 'assets/images/dblogo.png';
 import { logOut } from '../../utils/api/loginApi';
 import { Button, Logo, LogoutText } from './styled';
 
