@@ -23,15 +23,13 @@ export const AppHeader: FC<Props> = ({ title, subTitle, routes }) => {
           {routes.map(({ path, breadcrumbName }, i) => {
             if (i + 1 === routes.length)
               return (
-                <CurrRouteName key={`breadcrumbName${i}`}>
+                <CurrRouteName key={`${breadcrumbName}${i}`}>
                   {breadcrumbName}
                 </CurrRouteName>
               );
             return (
-              <span key={`breadcrumbName${i}`}>
-                <LinkText key={`breadcrumbName${i}`} to={path}>
-                  {breadcrumbName}
-                </LinkText>
+              <span key={`${breadcrumbName}${i}`}>
+                <LinkText to={path}>{breadcrumbName}</LinkText>
                 <CurrRouteName> /</CurrRouteName>
               </span>
             );

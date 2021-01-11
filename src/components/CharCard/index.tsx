@@ -25,7 +25,7 @@ export const CharCard: FC<Props> = ({ charId }) => {
             <CardImage size={150} src={char.image} />
             <TextWrap>
               {char.episodesList.map((item: string, i: number) => (
-                <EpisodeName key={`item${i}`}>{item}</EpisodeName>
+                <EpisodeName key={`${item}${i}`}>{item}</EpisodeName>
               ))}
             </TextWrap>
           </Container>
