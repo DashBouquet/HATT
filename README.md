@@ -47,3 +47,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
+
+### `cd server + yarn dev`
+
+Run GraphQL test server.
+
