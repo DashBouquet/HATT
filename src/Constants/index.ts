@@ -13,6 +13,17 @@ export const DEFAULT_DATA = {
 //login
 export const SET_TOKEN = 'SET_TOKEN';
 
+export const routesGql = [
+  {
+    path: '/',
+    breadcrumbName: 'HATT',
+  },
+  {
+    path: '/gql_apollo',
+    breadcrumbName: 'React + Apollo Tutorial',
+  },
+];
+
 export const routesCss = [
   {
     path: '/',

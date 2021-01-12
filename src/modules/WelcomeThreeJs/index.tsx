@@ -14,6 +14,9 @@ export const WelcomeThreeJs: FC = () => {
         <RouteLink to="/unknown_css">
           <ButtonText>UNKNOWN CSS WORKSHOP</ButtonText>
         </RouteLink>
+        <RouteLink to="/gql_apollo">
+          <ButtonText>HACKER NEWS</ButtonText>
+        </RouteLink>
         <LogoutButton />
       </HeaderWrapper>
     </PageWrapper>

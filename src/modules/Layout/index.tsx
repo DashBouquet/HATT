@@ -8,6 +8,7 @@ import Dashboard from '../Dashboard';
 import { Login } from '../Login';
 import { selectToken } from '../Login/selectors';
 import { WelcomeThreeJs } from '../WelcomeThreeJs';
+import { GqlApolloTest } from 'modules/GqlApolloTest';
 
 export const Layout: FC = () => {
   const dispatch = useDispatch();
@@ -40,6 +41,11 @@ export const Layout: FC = () => {
           path="/unknown_css"
           isLoggedIn={!!loginToken}
           component={CssWorkshop}
+        />
+        <PrivateRoute
+          path="/gql_apollo"
+          isLoggedIn={!!loginToken}
+          component={GqlApolloTest}
         />
         <Route exact path="/login" component={Login} />
       </Switch>
