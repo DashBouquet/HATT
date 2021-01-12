@@ -1,20 +1,48 @@
-import React, { FC, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { SET_TOKEN } from '../../constants';
-import { Dashboard } from '../Dashboard';
+import React, { FC, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Loader, PrivateRoute } from 'components';
+import { SET_TOKEN } from 'Constants';
+import { CssWorkshop } from '../CssWorkshop';
+import Dashboard from '../Dashboard';
 import { Login } from '../Login';
+import { selectToken } from '../Login/selectors';
+import { WelcomeThreeJs } from '../WelcomeThreeJs';
 
 export const Layout: FC = () => {
   const dispatch = useDispatch();
+  const loginToken = useSelector(selectToken);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const loginToken = localStorage.getItem('loginToken');
     dispatch({ type: SET_TOKEN, payload: loginToken });
+    setLoading(false);
   }, [dispatch]);
+
+  if (loading) return <Loader />;
+
   return (
     <Router>
-      <Route path="/login" component={Login} />
-      <Route path="/" component={Dashboard} />
+      <Switch>
+        <PrivateRoute
+          path="/"
+          exact
+          isLoggedIn={!!loginToken}
+          component={WelcomeThreeJs}
+        />
+        <PrivateRoute
+          path="/dashboard"
+          isLoggedIn={!!loginToken}
+          component={Dashboard}
+        />
+        <PrivateRoute
+          path="/unknown_css"
+          isLoggedIn={!!loginToken}
+          component={CssWorkshop}
+        />
+        <Route exact path="/login" component={Login} />
+      </Switch>
     </Router>
   );
 };

@@ -1,9 +1,9 @@
 import React, { FC, useMemo } from 'react';
 import { Descriptions } from 'antd';
 import { CardImage, EpisodeName, Container, TextWrap } from './styled';
-import { ParsedCharacter } from '../../types';
+import { ParsedCharacter } from 'types';
 import { useSelector } from 'react-redux';
-import { selectCharacterPage } from '../../modules/Dashboard/selectors';
+import { selectCharacterPage } from 'modules/Dashboard/selectors';
 
 type Props = {
   charId: number;
@@ -25,7 +25,7 @@ export const CharCard: FC<Props> = ({ charId }) => {
             <CardImage size={150} src={char.image} />
             <TextWrap>
               {char.episodesList.map((item: string, i: number) => (
-                <EpisodeName key={`item${i}`}>{item}</EpisodeName>
+                <EpisodeName key={`${item}${i}`}>{item}</EpisodeName>
               ))}
             </TextWrap>
           </Container>

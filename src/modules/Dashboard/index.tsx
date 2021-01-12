@@ -1,8 +1,9 @@
 import React, { FC, useCallback } from 'react';
-import { Success, Text, H1, ButtonForTest } from './styled';
-import { useFetch } from '../../hooks/useFetch';
+import makeComponentTrashable from 'trashable-react';
+import { Text } from './styled';
+import { useFetch } from 'hooks/useFetch';
 import { Modal, Avatar, Table, Tag, Button } from 'antd';
-import { CharCard } from '../../components';
+import { CharCard, AppHeader } from 'components';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectCharacterPage,
@@ -13,18 +14,21 @@ import {
   selectTotal,
   selectVisible,
 } from './selectors';
-import { Redirect } from 'react-router-dom';
-import { ParsedRes } from '../../types';
+import { ParsedRes } from 'types';
 import {
   SET_CURR_CHAR,
   SET_CURR_PAGE,
   SET_DATA,
   SET_MODAL_VISIBLE,
-  SET_TOKEN,
-} from '../../constants';
-import { selectToken } from '../Login/selectors';
+  routesDashboard,
+} from 'Constants';
+import { PageWrapper } from 'typography';
 
-export const Dashboard: FC = () => {
+type Props = {
+  registerPromise: () => void;
+};
+
+export const Dashboard: FC<Props> = ({ registerPromise }) => {
   const dispatch = useDispatch();
   const characterPage = useSelector(selectCharacterPage);
   const RMApi = useSelector(selectRMApi);
@@ -33,21 +37,16 @@ export const Dashboard: FC = () => {
   const currChar = useSelector(selectCurrChar);
   const hiddenTextVisible = useSelector(selectHiddenTextVisible);
   const visible = useSelector(selectVisible);
-  const loginToken = useSelector(selectToken);
   const setToStore = useCallback(
     (payload: ParsedRes) => dispatch({ type: SET_DATA, payload }),
     [dispatch]
   );
   const getCharactersPage = useCallback(
-    () => RMApi.getCharactersPage(currPage),
-    [RMApi, currPage]
+    () => RMApi.getCharactersPage(registerPromise, currPage),
+    [RMApi, currPage, registerPromise]
   );
   const { isLoading, isError } = useFetch(setToStore, getCharactersPage);
 
-  const logOut = () => {
-    dispatch({ type: SET_TOKEN, payload: '' });
-    localStorage.removeItem('loginToken');
-  };
   const setCurrPage = (page: number) =>
     dispatch({ type: SET_CURR_PAGE, payload: page });
   const setModalVisible = (payload: boolean) =>
@@ -98,12 +97,14 @@ export const Dashboard: FC = () => {
     },
   ];
 
-  if (!loginToken) {
-    return <Redirect to="/login" />;
-  }
-
   return (
-    <Success>
+    <PageWrapper>
+      <AppHeader
+        title="R&M Dashboard"
+        subTitle="test task"
+        routes={routesDashboard}
+      />
+
       {isError && <div>Something went wrong...</div>}
       {visible && (
         <Modal
@@ -117,8 +118,6 @@ export const Dashboard: FC = () => {
           <CharCard charId={currChar} />
         </Modal>
       )}
-      <H1>Rick&Morty App</H1>
-      <ButtonForTest onClick={logOut}>LOG OUT</ButtonForTest>
       {hiddenTextVisible && <div>Surprise</div>}
       <Table
         loading={isLoading}
@@ -133,6 +132,8 @@ export const Dashboard: FC = () => {
         dataSource={characterPage}
         rowKey={(record) => record.id}
       />
-    </Success>
+    </PageWrapper>
   );
 };
+
+export default makeComponentTrashable(Dashboard);
