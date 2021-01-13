@@ -1,12 +1,10 @@
 import { Reducer } from 'redux';
 import { SET_TOKEN } from '../../Constants';
 import { StateLogin } from '../../types';
-import { LoginApi as Api } from '../../utils/api/loginApi';
 
 type Action = { type: string; payload: any };
-const LoginApi = new Api();
+
 export const dashboardState = {
-  LoginApi,
   loginToken: '',
 };
 

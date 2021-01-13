@@ -19,7 +19,7 @@ export const CreateLink: FC = () => {
       description: formState.description,
       url: formState.url,
     },
-    onCompleted: () => history.push('/'),
+    onCompleted: () => history.push('/gql_apollo'),
   });
 
   return (

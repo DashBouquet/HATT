@@ -11,7 +11,7 @@ export const HeaderWrapper = styled.div`
 
 export const HeaderBox = styled.div`
   display: flex;
-  align-items: center;
+  align-items: baseline;
   color: #000000;
 `;
 
@@ -21,6 +21,7 @@ export const Title = styled(CssRuleName)`
 
 export const HackerLink = styled(LinkText)`
   color: #000000;
+  text-decoration: underline;
 `;
 
 export const Separator = styled.div`

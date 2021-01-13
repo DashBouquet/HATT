@@ -167,3 +167,5 @@ export const cssRulesArray = [
   'word-wrap',
   'writing-mode',
 ];
+
+export const AUTH_TOKEN = 'auth-token';
