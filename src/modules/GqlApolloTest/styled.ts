@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { CssRuleDescription, CssRuleName, CurrRouteName } from 'typography';
 
 export const RuleWrapper = styled.div`
   display: flex;
