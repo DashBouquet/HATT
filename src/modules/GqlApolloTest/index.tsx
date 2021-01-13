@@ -1,7 +1,8 @@
-import { AppHeader, CreateLink } from 'components';
+import { AppHeader } from 'components';
 import { routesGql } from 'Constants';
 import React, { FC } from 'react';
 import { PageWrapper } from 'typography';
+import { Header } from './components/Header';
 import { LinkList } from './components/LinkList';
 import {} from './styled';
 
@@ -13,8 +14,8 @@ export const GqlApolloTest: FC = () => {
         subTitle="howtographql.com/react-apollo"
         routes={routesGql}
       />
+      <Header />
       <LinkList />
-      <CreateLink />
     </PageWrapper>
   );
 };
