@@ -86,3 +86,10 @@ export type Breadcrumb = {
   path: string;
   breadcrumbName: string;
 };
+
+export type LinkType = {
+  id: string;
+  description: string;
+  url: string;
+  createdAt: string;
+};
