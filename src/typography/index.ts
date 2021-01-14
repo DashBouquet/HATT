@@ -54,9 +54,10 @@ export const PageSubTitle = styled.h3`
 
 export const ButtonText = styled.span`
   overflow: hidden;
-  font-size: 0.9em;
+  font-size: 1em;
   font-family: 'Oswald', sans-serif;
   letter-spacing: 3px;
   -webkit-transition: opacity 0.35s;
   transition: opacity 0.45s;
+  user-select: none;
 `;

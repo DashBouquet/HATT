@@ -1,5 +1,4 @@
 import { RMApi as Api } from './utils/api';
-import { LoginApi as ApiLogin } from './utils/api/loginApi';
 
 export type State = {
   dashboardReducer: StateDashboard;
@@ -17,7 +16,6 @@ export type StateDashboard = {
 };
 export type StateLogin = {
   loginToken: string;
-  LoginApi: ApiLogin;
 };
 
 export type AppContextType = {
@@ -85,4 +83,32 @@ export type ExtractedLocNumbers = {
 export type Breadcrumb = {
   path: string;
   breadcrumbName: string;
+};
+
+export type Feed = {
+  id: string;
+  links: LinkType[];
+  count: number;
+};
+
+export type LinkType = {
+  id: string;
+  description: string;
+  url: string;
+  postedBy: User;
+  votes: Vote[];
+  createdAt: Date;
+};
+
+export type Vote = {
+  id: string;
+  link: LinkType;
+  user: User;
+};
+
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  links: LinkType[];
 };

@@ -12,6 +12,19 @@ export const DEFAULT_DATA = {
 
 //login
 export const SET_TOKEN = 'SET_TOKEN';
+export const AUTH_TOKEN = 'auth-token';
+
+// breadcrumbs
+export const routesGql = [
+  {
+    path: '/',
+    breadcrumbName: 'HATT',
+  },
+  {
+    path: '/gql_apollo',
+    breadcrumbName: 'React + Apollo Tutorial',
+  },
+];
 
 export const routesCss = [
   {
@@ -35,6 +48,7 @@ export const routesDashboard = [
   },
 ];
 
+// css workshop
 export const cssRulesArray = [
   'all',
   'azimuth',
@@ -156,3 +170,6 @@ export const cssRulesArray = [
   'word-wrap',
   'writing-mode',
 ];
+
+// hacker news
+export const LINKS_PER_PAGE = 5;
