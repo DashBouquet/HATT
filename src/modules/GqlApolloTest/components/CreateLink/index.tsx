@@ -2,11 +2,13 @@ import React, { FC, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { useHistory } from 'react-router';
 import { AppHeader } from 'components';
+// import { LINKS_PER_PAGE, routesGql } from 'Constants';
 import { routesGql } from 'Constants';
 import { CREATE_LINK_MUTATION } from 'graphql/mutations';
 import { PageWrapper } from 'typography';
 import { Header } from '../Header';
 import { InputWrapper, Input } from './styled';
+import { FEED_QUERY } from 'graphql/queries';
 
 export const CreateLink: FC = () => {
   const history = useHistory();
@@ -18,6 +20,34 @@ export const CreateLink: FC = () => {
     variables: {
       description: formState.description,
       url: formState.url,
+    },
+    update(cache, { data: { post } }) {
+      // const take = LINKS_PER_PAGE;
+      // const skip = 0;
+      // const orderBy = { createdAt: 'desc' };
+
+      const { feed } = cache.readQuery<any>({
+        query: FEED_QUERY,
+        // variables: {
+        //   take,
+        //   skip,
+        //   orderBy,
+        // },
+      });
+
+      cache.writeQuery({
+        query: FEED_QUERY,
+        data: {
+          feed: {
+            links: [post, ...feed.links],
+          },
+        },
+        // variables: {
+        //   take,
+        //   skip,
+        //   orderBy,
+        // },
+      });
     },
     onCompleted: () => history.push('/gql_apollo'),
   });
