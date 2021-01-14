@@ -37,6 +37,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/no-empty-function': 'off',
+    'react/no-children-prop': 'off',
   },
   globals: { React: 'writable' },
 };

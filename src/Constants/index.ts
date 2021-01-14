@@ -12,7 +12,9 @@ export const DEFAULT_DATA = {
 
 //login
 export const SET_TOKEN = 'SET_TOKEN';
+export const AUTH_TOKEN = 'auth-token';
 
+// breadcrumbs
 export const routesGql = [
   {
     path: '/',
@@ -46,6 +48,7 @@ export const routesDashboard = [
   },
 ];
 
+// css workshop
 export const cssRulesArray = [
   'all',
   'azimuth',
@@ -168,4 +171,5 @@ export const cssRulesArray = [
   'writing-mode',
 ];
 
-export const AUTH_TOKEN = 'auth-token';
+// hacker news
+export const LINKS_PER_PAGE = 5;

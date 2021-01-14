@@ -85,9 +85,30 @@ export type Breadcrumb = {
   breadcrumbName: string;
 };
 
+export type Feed = {
+  id: string;
+  links: LinkType[];
+  count: number;
+};
+
 export type LinkType = {
   id: string;
   description: string;
   url: string;
-  createdAt: string;
+  postedBy: User;
+  votes: Vote[];
+  createdAt: Date;
+};
+
+export type Vote = {
+  id: string;
+  link: LinkType;
+  user: User;
+};
+
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  links: LinkType[];
 };

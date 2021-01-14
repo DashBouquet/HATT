@@ -23,29 +23,4 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
   }
-
-  input {
-    max-width: 500px;
-  }
-
-  .gray {
-    color: #828282;
-  }
-
-  .orange {
-    background-color: #ff6600;
-  }
-
-  .background-gray {
-    background-color: rgb(246, 246, 239);
-  }
-
-  .f11 {
-    font-size: 11px;
-  }
-
-  .w85 {
-    width: 85%;
-  }
-
 `;
